@@ -32,3 +32,24 @@ app.post('/cities', jsonParser, (request, response) => {
     .then(doc => response.status(200).json({success:"Saved city"}))
     .catch(error => response.status(500).json({error}))
 })
+
+
+app.patch('/cities', jsonParser, (request, response) => {
+    
+    let match = { _id: request.body._id };
+    let update = {}
+
+    keys.forEach(key => {
+        let value = request.body[key];
+        if (value) {
+            update[key] = value
+        }
+    })
+
+    console.log(update)
+
+    City.findOneAndUpdate(match, update)
+    .then(result => response.status(200).json({success:result}))
+    .catch(error => response.status(500).json({error}))
+
+})
