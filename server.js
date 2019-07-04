@@ -5,6 +5,8 @@ const jsonParser = bodyParser.json();
 const PORT = process.env.PORT || 3001
 const { port, database, host, driver} = require('./settings/database');
 const uri = `${driver}://${host}:${port}/${database}`
+const City = require('./models/Cities');
+const cityFields = Object.keys(City.schema.obj);
 
 
 // [NOTE] Connect to mongodb using the uri provided
@@ -46,7 +48,7 @@ app.patch('/cities', jsonParser, (request, response) => {
     let match = { _id: request.body._id };
     let update = {}
 
-    keys.forEach(key => {
+    cityFields.forEach(key => {
         let value = request.body[key];
         if (value) {
             update[key] = value
