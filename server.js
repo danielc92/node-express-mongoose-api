@@ -8,3 +8,12 @@ const uri = `${driver}://${host}:${port}/${database}`
 mongoose.connect(uri, { useNewUrlParser: true })
 
 app = express()
+
+
+app.get('/cities', (request, response) => {
+
+    City.find({})
+    .then(data=>response.json(data))
+    .catch(error=>response.json({error}))
+
+})
