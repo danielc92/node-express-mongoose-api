@@ -53,3 +53,12 @@ app.patch('/cities', jsonParser, (request, response) => {
     .catch(error => response.status(500).json({error}))
 
 })
+
+app.delete('/cities', jsonParser, (request, response) => {
+
+    id = request.body._id;
+
+    City.findByIdAndDelete({_id: id})
+    .then(result => response.json({result}))
+    .catch(error => response.json({error}))
+})
