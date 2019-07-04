@@ -17,3 +17,18 @@ app.get('/cities', (request, response) => {
     .catch(error=>response.json({error}))
 
 })
+
+
+app.post('/cities', jsonParser, (request, response) => {
+
+    let message = new City(
+    {
+        name: request.body.name,
+        country: request.body.country,
+        population: request.body.population
+    })
+
+    message.save()
+    .then(doc => response.status(200).json({success:"Saved city"}))
+    .catch(error => response.status(500).json({error}))
+})
