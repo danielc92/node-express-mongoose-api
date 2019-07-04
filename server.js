@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
 const jsonParser = bodyParser.json();
 const PORT = process.env.PORT || 3001
 const { port, database, host, driver} = require('./settings/database');
@@ -15,6 +18,11 @@ mongoose.connect(uri, { useNewUrlParser: true })
 
 // [NOTE] Intiate express app
 app = express()
+
+
+// [NOTE] Log with morgan package
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a'})
+app.use(morgan('combined', { stream: accessLogStream }))
 
 
 // [NOTE] This route allows users to retrieve the list of cities from the database using a GET request
