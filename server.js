@@ -2,23 +2,29 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const PORT = process.env.PORT || 3001
 const { port, database, host, driver} = require('./settings/database');
 const uri = `${driver}://${host}:${port}/${database}`
 
+
+// [NOTE] Connect to mongodb using the uri provided
 mongoose.connect(uri, { useNewUrlParser: true })
 
+
+// [NOTE] Intiate express app
 app = express()
 
 
+// [NOTE] This route allows users to retrieve the list of cities from the database using a GET request
 app.get('/cities', (request, response) => {
 
     City.find({})
     .then(data=>response.json(data))
     .catch(error=>response.json({error}))
-
 })
 
 
+// [NOTE] This route will allow users to create a new city with a POST request
 app.post('/cities', jsonParser, (request, response) => {
 
     let message = new City(
@@ -34,6 +40,7 @@ app.post('/cities', jsonParser, (request, response) => {
 })
 
 
+// [NOTE] This route allows uses to update documents using a PATCH request, given an id
 app.patch('/cities', jsonParser, (request, response) => {
     
     let match = { _id: request.body._id };
@@ -46,14 +53,14 @@ app.patch('/cities', jsonParser, (request, response) => {
         }
     })
 
-    console.log(update)
-
     City.findOneAndUpdate(match, update)
     .then(result => response.status(200).json({success:result}))
     .catch(error => response.status(500).json({error}))
 
 })
 
+
+// [NOTE] This route allows user to delete a document from the city model, given an id
 app.delete('/cities', jsonParser, (request, response) => {
 
     id = request.body._id;
@@ -64,5 +71,5 @@ app.delete('/cities', jsonParser, (request, response) => {
 })
 
 
-const PORT = process.env.PORT || 3001
+// [NOTE] Listen on designated PORT for incoming requests
 app.listen(PORT, ()=> console.log(`Server listening on port ${PORT}`))
