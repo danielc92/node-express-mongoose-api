@@ -20,7 +20,9 @@ app = express()
 // [NOTE] This route allows users to retrieve the list of cities from the database using a GET request
 app.get('/cities', (request, response) => {
 
-    City.find({})
+    let query = request.query
+
+    City.find(query)
     .then(data=>response.json(data))
     .catch(error=>response.json({error}))
 })
