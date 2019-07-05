@@ -11,7 +11,7 @@ Creating a basic CRUD API using Node as backend, Express web framework, MongoDB 
 
 **Installing Depencendies**
 
-Dependencies are included in the package-lock.json and can be installed via:
+Dependencies and versions are listed in the package.json "dependencies" key, and can be installed via the following command from root:
 
 ```sh
 npm install
