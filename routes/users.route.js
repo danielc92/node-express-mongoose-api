@@ -9,22 +9,20 @@ router.post('/login', (request,response) => {
 
     User.findOne({email: request.body.email})
         .then(user => {
-            if (user) {
-                return bcrypt.compare(request.body.password, user.password)
-                      .then(result => {
-                          if (result) {
-                              const token = user.makeToken();
-                              response.json(token);
-                          } else {
-                              response.status(400).json({message: "Invalid credentials. Try Again."})
-                          }
-                      })
-                      
-            } else {
-                response.status(400).json({message: "Invalid credentials. Try Again."})
-            }
+            bcrypt.compare(request.body.password, user.password)
+                .then(result => {
+                    if (result) {
+                        const token = user.makeToken();
+                        response.json(token);
+                    } else {
+                        response.status(400).json({message: "Error: Incorrect credentials."})
+                    }                   
+                })
+                .catch(error => {
+                    response.status(400).json({message: "Error: bcrypt scope."})
+                })
         }).catch(error => {
-            console.log(error);
+            response.status(400).json({message: "Error: user scope."})
         });
 });
 
