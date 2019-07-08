@@ -1,0 +1,7 @@
+::1 - - [08/Jul/2019:06:26:37 +0000] "POST /api/cities HTTP/1.1" 401 96 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:26:38 +0000] "POST /api/cities HTTP/1.1" 401 96 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:26:42 +0000] "POST /api/cities HTTP/1.1" 401 96 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:27:52 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:27:53 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:29:08 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:29:08 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
