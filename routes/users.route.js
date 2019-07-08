@@ -30,8 +30,20 @@ router.post('/login', (request,response) => {
 });
 
 router.post('/register', (request, response) => {
-    response.json({message: "register"})
 
+    User.findOne({email: request.body.email})
+    if (user) return response.status(400).json({message: 'This email is taken.'})
+
+    user = new User({
+        name: request.body.name,
+        email: request.body.email,
+        password: request.body.password
+    })
+
+    user.password = bcrypt.hash(user.password, settings.bcrypt_iterations)
+    user.save();
+
+    response.json({message: "Account has been created."})
 })
 
 

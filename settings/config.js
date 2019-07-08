@@ -4,5 +4,6 @@ module.exports = {
     db_host: 'localhost',
     db_driver: 'mongodb',
     token_secret: 'topsecretkey!!!!',
-    token_expiry_seconds: 5 * 60
+    token_expiry_seconds: 5 * 60,
+    bcrypt_iterations: 10
 }
