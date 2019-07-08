@@ -9,7 +9,7 @@ const path = require('path');
 
 // Database settings
 const mongoose = require('mongoose');
-const { port, database, host, driver} = require('./settings/database');
+const { port, database, host, driver} = require('./settings/config');
 const uri = `${driver}://${host}:${port}/${database}`
 
 // Route settings
