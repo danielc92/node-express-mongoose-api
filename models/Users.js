@@ -4,7 +4,7 @@ const validator = require('validator');
 
 console.log(settings);
 
-userSchema = mongoose.Schema({
+UserSchema = mongoose.Schema({
     name: {
         type:String,
         required:true,
@@ -31,5 +31,27 @@ userSchema = mongoose.Schema({
         type:Boolean
     }
 })
+
+UserSchema.methods.makeToken = function () {
+
+    const tokenHash = jwt.sign(
+        {
+            _id: this._id
+        },
+        settings.token_secret,
+        {
+            expiresIn: settings.token_expiry_seconds
+        }
+    )
+
+    const token = {
+        "x-auth-token": tokenHash,
+        "expiry-in-seconds": settings.token_expiry_seconds
+    }
+
+    return token;
+}
+
+module.exports = mongoose.model('User', UserSchema)
 
 

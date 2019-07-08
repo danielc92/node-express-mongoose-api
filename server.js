@@ -18,6 +18,8 @@ const routesCities = require('./routes/cities.route');
 
 // [NOTE] Connect to mongodb using the uri provided
 mongoose.connect(uri, { useNewUrlParser: true })
+        .then(()=>console.log('Server connection with mongodb successful'))
+        .catch(error => console.log(`An error has occured ${error}`))
 
 
 // [NOTE] Intiate express app
