@@ -1,11 +1,12 @@
 # Nodejs, Express.js, MongoDB API
-Creating a basic CRUD API using Node as backend, Express web framework, MongoDB and Mongoose.
+Creating a CRUD API using Node as backend, Express web framework, MongoDB and Mongoose. Includes json web token authentication system.
 
 # Before you get started
-- Understanding of NOSQL databases (Mongodb)
-- Understanding of API and relevant HTTP methods (POST, GET, PATCH, DELETE)
-- Basic Javascript (ES6)
-- Basic Node
+- NOSQL databases (Mongodb)
+- API and relevant HTTP methods (POST, GET, PATCH, DELETE)
+- Bcrypt/json web tokens
+- Javascript (ES6)
+- Nodejs 
 
 # Setup
 
@@ -47,6 +48,8 @@ nodemon server.js
 - Deleting a city with **DELETE** method in postman.
 - Updating a city with **PATCH** method in postman.
 - Creating a city with **POST** method in postman.
+- Creating a new account via /api/auth/register.
+- Restricting DELETE, PATCH, POST city routes to authenticated users.
 
 # Contributors
 - Daniel Corcoran
