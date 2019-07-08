@@ -13,14 +13,13 @@ const { port, database, host, driver} = require('./settings/config');
 const uri = `${driver}://${host}:${port}/${database}`
 
 // Route settings
-const routesCities = require('./routes/cities.route');
-
+const cityRoutes = require('./routes/cities.route');
+const userRoutes = require('./routes/users.route');
 
 // [NOTE] Connect to mongodb using the uri provided
 mongoose.connect(uri, { useNewUrlParser: true })
         .then(()=>console.log('Server connection with mongodb successful'))
         .catch(error => console.log(`An error has occured ${error}`))
-
 
 // [NOTE] Intiate express app
 app = express()
@@ -30,7 +29,9 @@ app = express()
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a'})
 app.use(morgan('combined', { stream: accessLogStream }))
 
-app.use('/cities', routesCities);
+// Use routes
+app.use('/api/cities', cityRoutes);
+app.use('/api/auth/', userRoutes);
 
 // [NOTE] Listen on designated PORT for incoming requests
 app.listen(PORT, ()=> console.log(`Server listening on port ${PORT}`))
