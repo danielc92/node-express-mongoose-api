@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const settings = require('../settings/config');
 const validator = require('validator');
 
-console.log(settings);
-
 UserSchema = mongoose.Schema({
     name: {
         type:String,

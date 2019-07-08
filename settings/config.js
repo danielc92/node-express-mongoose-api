@@ -1,5 +1,5 @@
 module.exports = {
-    port: 27017,
+    db_port: 27017,
     db_name: 'testmongoose',
     db_host: 'localhost',
     db_driver: 'mongodb',

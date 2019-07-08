@@ -9,8 +9,8 @@ const path = require('path');
 
 // Database settings
 const mongoose = require('mongoose');
-const { port, database, host, driver} = require('./settings/config');
-const uri = `${driver}://${host}:${port}/${database}`
+const { db_port, db_name, db_driver, db_host} = require('./settings/config');
+const uri = `${db_driver}://${db_host}:${db_port}/${db_name}`
 
 // Route settings
 const cityRoutes = require('./routes/cities.route');
