@@ -1,7 +1,5 @@
 const City = require('../models/Cities');
 const cityFields = Object.keys(City.schema.obj);
-const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
 const express = require('express')
 const router = express.Router()
 const auth = require('../middleware/auth');
@@ -30,7 +28,7 @@ router.post('/', auth, (request, response) => {
 
     message.save()
     .then(doc => response.status(200).json({success:"Saved city"}))
-    .catch(error => response.status(500).json({error}))
+    .catch(error => response.status(400).json({error}))
 })
 
 
@@ -49,7 +47,7 @@ router.patch('/', auth, (request, response) => {
 
     City.findOneAndUpdate(match, update)
     .then(result => response.status(200).json({success:result}))
-    .catch(error => response.status(500).json({error}))
+    .catch(error => response.status(400).json({error}))
 
 })
 

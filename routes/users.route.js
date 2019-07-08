@@ -41,6 +41,12 @@ router.post('/register', async(request, response) => {
         password: request.body.password
     })
 
+    user.validate(function(error) {
+        if (error) {
+            return response.status(400).json({message: error.message})
+        }
+    })
+
     user.password = await bcrypt.hash(user.password, settings.bcrypt_iterations)
     await user.save();
 

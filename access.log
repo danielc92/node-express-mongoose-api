@@ -36,3 +36,4 @@
 ::1 - - [08/Jul/2019:05:12:53 +0000] "POST /api/auth/register HTTP/1.1" 500 2259 "-" "PostmanRuntime/7.15.0"
 ::1 - - [08/Jul/2019:05:13:06 +0000] "POST /api/auth/register HTTP/1.1" 500 2259 "-" "PostmanRuntime/7.15.0"
 ::1 - - [08/Jul/2019:05:13:22 +0000] "POST /api/auth/register HTTP/1.1" 500 2259 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:05:40:51 +0000] "POST /api/users/register HTTP/1.1" 404 158 "-" "PostmanRuntime/7.15.0"

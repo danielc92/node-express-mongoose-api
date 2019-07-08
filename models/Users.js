@@ -28,7 +28,12 @@ UserSchema = mongoose.Schema({
         maxlength: 255
     },
     isAdmin: {
-        type:Boolean
+        type:Boolean,
+        default: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 })
 

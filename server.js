@@ -19,7 +19,7 @@ const uri = `${db_driver}://${db_host}:${db_port}/${db_name}`
 const cityRoutes = require('./routes/cities.route');
 const userRoutes = require('./routes/users.route');
 app.use('/api/cities', cityRoutes);
-app.use('/api/auth/', userRoutes);
+app.use('/api/auth', userRoutes);
 
 
 // [NOTE] Connect to mongodb using the uri provided
