@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const settings = require('../settings/config');
 const validator = require('validator');
+const jwt = require('jsonwebtoken');
+
 
 UserSchema = mongoose.Schema({
     name: {

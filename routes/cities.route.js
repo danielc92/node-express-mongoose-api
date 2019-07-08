@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const express = require('express')
 const router = express.Router()
+const auth = require('../middleware/auth');
+
 
 // [NOTE] This route allows users to retrieve the list of cities from the database using a GET request
 router.get('/', (request, response) => {
@@ -17,7 +19,7 @@ router.get('/', (request, response) => {
 
 
 // [NOTE] This route will allow users to create a new city with a POST request
-router.post('/', jsonParser, (request, response) => {
+router.post('/', auth, (request, response) => {
 
     let message = new City(
     {
@@ -33,7 +35,7 @@ router.post('/', jsonParser, (request, response) => {
 
 
 // [NOTE] This route allows uses to update documents using a PATCH request, given an id
-router.patch('/', jsonParser, (request, response) => {
+router.patch('/', auth, (request, response) => {
     
     let match = { _id: request.body._id };
     let update = {}
@@ -53,7 +55,7 @@ router.patch('/', jsonParser, (request, response) => {
 
 
 // [NOTE] This route allows user to delete a document from the city model, given an id
-router.delete('/', jsonParser, (request, response) => {
+router.delete('/', auth, (request, response) => {
 
     id = request.body._id;
 

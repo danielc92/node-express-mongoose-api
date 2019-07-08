@@ -6,12 +6,11 @@ const User = require('../models/Users');
 
 
 router.post('/login', (request,response) => {
-    const {email, password} = request.body
 
-    User.findOne({email})
+    User.findOne({email: request.body.email})
         .then(user => {
             if (user) {
-                return bcrypt.compare(password, user.password)
+                return bcrypt.compare(request.body.password, user.password)
                       .then(result => {
                           if (result) {
                               const token = user.makeToken();
@@ -29,9 +28,11 @@ router.post('/login', (request,response) => {
         });
 });
 
-router.post('/register', (request, response) => {
 
-    User.findOne({email: request.body.email})
+router.post('/register', async(request, response) => {
+
+    let user = await User.findOne({email: request.body.email})
+    console.log('user: ', user)
     if (user) return response.status(400).json({message: 'This email is taken.'})
 
     user = new User({
@@ -40,10 +41,13 @@ router.post('/register', (request, response) => {
         password: request.body.password
     })
 
-    user.password = bcrypt.hash(user.password, settings.bcrypt_iterations)
-    user.save();
+    user.password = await bcrypt.hash(user.password, settings.bcrypt_iterations)
+    await user.save();
 
-    response.json({message: "Account has been created."})
+    const token = user.makeToken();
+    response.header(token).json({
+        message: "Account has been created."
+    })
 })
 
 

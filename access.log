@@ -32,3 +32,7 @@
 ::1 - - [08/Jul/2019:04:30:31 +0000] "GET /cities HTTP/1.1" 200 513 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 ::1 - - [08/Jul/2019:04:30:31 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3002/cities" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 ::1 - - [08/Jul/2019:04:30:32 +0000] "GET /cities HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+::1 - - [08/Jul/2019:05:12:50 +0000] "GET /api/auth/register HTTP/1.1" 404 156 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:05:12:53 +0000] "POST /api/auth/register HTTP/1.1" 500 2259 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:05:13:06 +0000] "POST /api/auth/register HTTP/1.1" 500 2259 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:05:13:22 +0000] "POST /api/auth/register HTTP/1.1" 500 2259 "-" "PostmanRuntime/7.15.0"
