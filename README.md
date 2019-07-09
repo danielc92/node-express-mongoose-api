@@ -1,5 +1,13 @@
 # Nodejs, Express.js, MongoDB API
-Creating a CRUD API using Node as backend, Express web framework, MongoDB and Mongoose. Includes json web token authentication system.
+Creating a robust, secure and scalabale API, with authorization, logging system and full create/read/update/delete (CRUD) functionality.
+
+- `Nodejs` runtime environment for javascript
+- `Express.js` Web framework for API
+- `morgan` Logging middleware
+- `bcrypt` Hasher package for passwords
+- `jsonwebtoken` jwt package for securing endpoints
+- `mongoose` ODM for mongodb, provides validation and modelling of database
+
 
 # Before you get started
 - NOSQL databases (Mongodb)
@@ -18,7 +26,7 @@ Dependencies and versions are listed in the package.json "dependencies" key, and
 npm install
 ```
 
-**Installation of nodemon**
+**Installation of nodemon (optional)**
 
 This project uses nodemon for hot reloading
 I installed it globally using:
