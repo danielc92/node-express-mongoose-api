@@ -5,3 +5,8 @@
 ::1 - - [08/Jul/2019:06:27:53 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
 ::1 - - [08/Jul/2019:06:29:08 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
 ::1 - - [08/Jul/2019:06:29:08 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:32:41 +0000] "POST /api/auth/login HTTP/1.1" 400 32 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:33:45 +0000] "POST /api/cities/error HTTP/1.1" 404 156 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:33:55 +0000] "GET /api/cities/error HTTP/1.1" 200 10 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:34:07 +0000] "GET /api/cities/error HTTP/1.1" 200 7 "-" "PostmanRuntime/7.15.0"
+::1 - - [08/Jul/2019:06:34:23 +0000] "GET /api/cities/error HTTP/1.1" 500 7 "-" "PostmanRuntime/7.15.0"

@@ -20,6 +20,14 @@ const CitySchema = mongoose.Schema({
         required: true,
         min: 0,
         max: 1000000000
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
     }
 
 });

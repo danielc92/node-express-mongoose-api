@@ -62,5 +62,9 @@ router.delete('/', auth, (request, response) => {
     .catch(error => response.json({error}))
 })
 
+router.get('/error', (request, response) => {
+    response.status(500).json({n:0/333})
+})
+
 
 module.exports = router;
