@@ -34,19 +34,19 @@ router.post('/', auth, (request, response) => {
 
 // [NOTE] This route allows uses to update documents using a PATCH request, given an id
 router.patch('/', auth, (request, response) => {
-    if (!request.body._id) return response.status(400).json({message: "No _id was provided."})
-    let match = { _id: request.body._id };
-    let update = {}
+    
+    const locate_id = request.body._id
+    if (!locate_id) return response.status(400).json({message: "No _id was provided."})
+    
+    let updates = {}
 
     cityFields.forEach(key => {
         let value = request.body[key];
-        if (value) {
-            update[key] = value
-            update['updatedAt'] = Date.now()
-        }
-    })
+        if (value) { updates[key] = value }})
 
-    City.findOneAndUpdate(match, update)
+    updates['updatedAt'] = Date.now()
+
+    City.findByIdAndUpdate(locate_id, updates)
     .then(result => response.status(200).json({success:result}))
     .catch(error => response.status(400).json({error}))
 
