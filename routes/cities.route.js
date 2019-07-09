@@ -1,5 +1,5 @@
 const City = require('../models/Cities');
-const cityFields = Object.keys(City.schema.obj);
+const cityFields = ['population', 'country', 'name'];
 const express = require('express')
 const router = express.Router()
 const auth = require('../middleware/auth');
@@ -34,7 +34,7 @@ router.post('/', auth, (request, response) => {
 
 // [NOTE] This route allows uses to update documents using a PATCH request, given an id
 router.patch('/', auth, (request, response) => {
-    
+    if (!request.body._id) return response.status(400).json({message: "No _id was provided."})
     let match = { _id: request.body._id };
     let update = {}
 
@@ -42,6 +42,7 @@ router.patch('/', auth, (request, response) => {
         let value = request.body[key];
         if (value) {
             update[key] = value
+            update['updatedAt'] = Date.now()
         }
     })
 
@@ -60,10 +61,6 @@ router.delete('/', auth, (request, response) => {
     City.findByIdAndDelete({_id: id})
     .then(result => response.json({result}))
     .catch(error => response.json({error}))
-})
-
-router.get('/error', (request, response) => {
-    response.status(500).json({n:0/333})
 })
 
 
