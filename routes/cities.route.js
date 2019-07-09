@@ -48,7 +48,7 @@ router.patch('/', auth, (request, response) => {
 
     City.findByIdAndUpdate(locate_id, updates)
     .then(result => response.status(200).json({success:result}))
-    .catch(error => response.status(400).json({error}))
+    .catch(error => response.status(400).json({error: error.message}))
 
 })
 
