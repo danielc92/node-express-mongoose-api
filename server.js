@@ -2,6 +2,11 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+
+const cors = require('./middleware/cors');
+app.use(cors);
+
+
 const PORT = process.env.PORT || 3002;
 
 // [NOTE] Log with morgan package
