@@ -65,3 +65,5 @@ nodemon server.js
 # Sources
 - [Mongoose Documentation](https://mongoosejs.com/)
 - [Express Documentation](https://expressjs.com/)
+- [Morgan Logger](https://www.npmjs.com/package/morgan/v/1.1.1)
+- [Handling Authentication and Authorization with Node](https://medium.com/quick-code/handling-authentication-and-authorization-with-node-7f9548fedde8)
