@@ -6,13 +6,30 @@ const auth = require('../middleware/auth');
 
 
 // [NOTE] This route allows users to retrieve the list of cities from the database using a GET request
+/*
+Pagination logic
+Filter out query params which are relevant to the model
+Create a query based on results from process above
+Store the page query separately (including it messes up the query and returns no results)
+Make pagination call on City model, passing in queries and
+*/
 router.get('/', (request, response) => {
 
-    const options = { page: 1 , limit: 6}
+    const allowed = ['name', 'country', 'population']
+    let queries = {}
+    
+    for (q in request.query) {
+        if (allowed.includes(q)) {
+            queries[q] = request.query[q]
+        }
+    }
 
-    let query = request.query
+    let options = { 
+        page: parseInt(request.query.page), 
+        limit: 8
+    }
 
-    City.paginate(query, options)
+    City.paginate(queries, options)
     .then(result => response.json(result))
     .catch(error => console.log(error))
 })
