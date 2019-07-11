@@ -1,5 +1,5 @@
 # Nodejs, Express.js, MongoDB API
-Creating a robust, secure and scalabale API, with authorization, logging system and full create/read/update/delete (CRUD) functionality.
+Creating a robust, secure and scalabale API, with authorization, querying, pagination, logging system and full create/read/update/delete (CRUD) functionality.
 
 - `Nodejs` runtime environment for javascript
 - `Express.js` Web framework for API
@@ -7,6 +7,7 @@ Creating a robust, secure and scalabale API, with authorization, logging system 
 - `bcrypt` Hasher package for passwords
 - `jsonwebtoken` jwt package for securing endpoints
 - `mongoose` ODM for mongodb, provides validation and modelling of database
+- `mongoose-paginate-v2` Robust paginator plugin for mongoose models
 
 
 # Before you get started
