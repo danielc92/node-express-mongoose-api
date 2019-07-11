@@ -5,26 +5,26 @@ const User = require('../models/Users');
 const router = express.Router();
 
 
-router.post('/login', (request,response) => {
+router.post('/login', async (request,response) => {
 
-    User.findOne({email: request.body.email})
-        .then(user => {
-            bcrypt.compare(request.body.password, user.password)
-                .then(result => {
-                    if (result) {
-                        const token = user.makeToken();
-                        response.json(token);
-                    } else {
-                        response.status(400).json({message: "Error: Incorrect credentials."})
-                    }                   
-                })
-                .catch(error => {
-                    response.status(400).json({message: "Error: bcrypt scope."})
-                })
-        }).catch(error => {
-            response.status(400).json({message: "Error: user scope."})
-        });
+    if (!request.body.email || !request.body.password) return response.status(400).json({message: "You need to supply an email and password."})
+
+    let user = await User.findOne({email: request.body.email})
+                         .then(user => user)
+                         .catch(error => error)
+
+    if (!user) return response.status(400).json({message: "Email does not exist."})
+
+    let comparison = await bcrypt.compare(request.body.password, user.password)
+                                .then(result => result)
+                                .catch(error => error)
+
+    if (!comparison) return response.status(400).json({message: "Incorrect credentials, try again."})
+
+    const token = await user.makeToken()
+    response.status(200).json({...token, message: "You have successfully logged in."})
 });
+
 
 
 /*
