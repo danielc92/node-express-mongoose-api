@@ -4,7 +4,13 @@ const express = require('express');
 const User = require('../models/Users');
 const router = express.Router();
 
-
+/*
+Login route goes through several checks
+- First checks if user has supplied both a username and password in the body
+- Next checks if a user document exists for the supplied email
+- Next checks if the hashed version of password supplied matches hashed password from user document
+- Finally, if all the above checks out, the token is generated and status code 200 is sent along with token
+*/
 router.post('/login', async (request,response) => {
 
     if (!request.body.email || !request.body.password) return response.status(400).json({message: "You need to supply an email and password."})
