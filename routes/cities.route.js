@@ -8,11 +8,13 @@ const auth = require('../middleware/auth');
 // [NOTE] This route allows users to retrieve the list of cities from the database using a GET request
 router.get('/', (request, response) => {
 
+    const options = { page: 1 , limit: 6}
+
     let query = request.query
 
-    City.find({})
-    .then(data=>response.json(data))
-    .catch(error=>response.json({error}))
+    City.paginate(query, options)
+    .then(result => response.json(result))
+    .catch(error => console.log(error))
 })
 
 

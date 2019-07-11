@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const paginator = require('mongoose-paginate-v2');
+
 
 // [NOTE] Mongoose schema has many advantages, such as validation and ease of use over the regular mongodb driver
 const CitySchema = mongoose.Schema({
@@ -32,6 +34,8 @@ const CitySchema = mongoose.Schema({
 
 });
 
+// Add pagination plugin to mongoose schema
+CitySchema.plugin(paginator)
 
 // [NOTE] Export the model so that the server.js can import and use it.
 module.exports = mongoose.model('City', CitySchema)
